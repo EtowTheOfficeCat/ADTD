@@ -1,52 +1,97 @@
 fileFormatVersion: 2
-guid: 79e9ca43eba176244a11be91d3b6a212
+guid: 511f7ce6aeddb464daaf3a77d0baec4f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Gun implacement
-    100002: GunBox
-    100004: Inner Gun
-    100006: Inner gun
-    100008: Lower Gun part
-    100010: //RootNode
-    100012: Tower Base
-    100014: Tower turning base
-    100016: Tower turning structure
-    400000: Gun implacement
-    400002: GunBox
-    400004: Inner Gun
-    400006: Inner gun
-    400008: Lower Gun part
-    400010: //RootNode
-    400012: Tower Base
-    400014: Tower turning base
-    400016: Tower turning structure
+    100000: GunBox
+    100002: Inner Gun
+    100004: Inner gun
+    100006: Inner Gun001
+    100008: Inner gun001
+    100010: Inner Gun002
+    100012: Inner Gun003
+    100014: Lower Gun part
+    100016: Lower Gun part001
+    100018: Lower Gun part002
+    100020: Lower Gun part003
+    100022: Main Gun
+    100024: Secondary Gun 1
+    100026: Secondary Gun 2
+    100028: //RootNode
+    100030: Tower Base
+    100032: Tower turning base
+    100034: Tower turning structure
+    400000: GunBox
+    400002: Inner Gun
+    400004: Inner gun
+    400006: Inner Gun001
+    400008: Inner gun001
+    400010: Inner Gun002
+    400012: Inner Gun003
+    400014: Lower Gun part
+    400016: Lower Gun part001
+    400018: Lower Gun part002
+    400020: Lower Gun part003
+    400022: Main Gun
+    400024: Secondary Gun 1
+    400026: Secondary Gun 2
+    400028: //RootNode
+    400030: Tower Base
+    400032: Tower turning base
+    400034: Tower turning structure
     2100000: Lower Gun
     2100002: Upper Gun
-    2300000: Gun implacement
-    2300002: GunBox
-    2300004: Inner Gun
-    2300006: Inner gun
-    2300008: Lower Gun part
-    2300010: Tower Base
-    2300012: Tower turning base
-    2300014: Tower turning structure
-    3300000: Gun implacement
-    3300002: GunBox
-    3300004: Inner Gun
-    3300006: Inner gun
-    3300008: Lower Gun part
-    3300010: Tower Base
-    3300012: Tower turning base
-    3300014: Tower turning structure
+    2300000: GunBox
+    2300002: Inner Gun
+    2300004: Inner gun
+    2300006: Inner Gun001
+    2300008: Inner gun001
+    2300010: Inner Gun002
+    2300012: Inner Gun003
+    2300014: Lower Gun part
+    2300016: Lower Gun part001
+    2300018: Lower Gun part002
+    2300020: Lower Gun part003
+    2300022: Main Gun
+    2300024: Secondary Gun 1
+    2300026: Secondary Gun 2
+    2300028: Tower Base
+    2300030: Tower turning base
+    2300032: Tower turning structure
+    3300000: GunBox
+    3300002: Inner Gun
+    3300004: Inner gun
+    3300006: Inner Gun001
+    3300008: Inner gun001
+    3300010: Inner Gun002
+    3300012: Inner Gun003
+    3300014: Lower Gun part
+    3300016: Lower Gun part001
+    3300018: Lower Gun part002
+    3300020: Lower Gun part003
+    3300022: Main Gun
+    3300024: Secondary Gun 1
+    3300026: Secondary Gun 2
+    3300028: Tower Base
+    3300030: Tower turning base
+    3300032: Tower turning structure
     4300000: Tower Base
     4300002: Tower turning base
     4300004: Tower turning structure
     4300006: GunBox
-    4300008: Gun implacement
+    4300008: Main Gun
     4300010: Lower Gun part
     4300012: Inner gun
     4300014: Inner Gun
+    4300016: Lower Gun part001
+    4300018: Inner Gun001
+    4300020: Inner gun001
+    4300022: Secondary Gun 1
+    4300024: Inner Gun002
+    4300026: Lower Gun part002
+    4300028: Secondary Gun 2
+    4300030: Inner Gun003
+    4300032: Lower Gun part003
   externalObjects: {}
   materials:
     importMaterials: 1
