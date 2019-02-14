@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 
     }
     public EnemyEvent EnemyDied = new EnemyEvent();
+    [SerializeField] private LayerMask layerMask;
     public void SetDestiation(Vector3 goalPos)
     {
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
@@ -22,6 +23,13 @@ public class Enemy : MonoBehaviour
         }
 
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Projectile"))
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnDisable()
     {
         EnemyDied?.Invoke(this);
@@ -31,6 +39,7 @@ public class Enemy : MonoBehaviour
     {
         EnemyDied?.Invoke(this);
     }
+    
 
 
 
