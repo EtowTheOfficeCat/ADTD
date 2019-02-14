@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1191601549615498776}
   - component: {fileID: 8639507813161622063}
   - component: {fileID: 2755400197339112696}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 8274360159558573009}
   - component: {fileID: 4790399454755195519}
   - component: {fileID: 1646299352307885112}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc25513d2209e44b8a02eaa55c25c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
+  Speed: 20
 --- !u!54 &1646299352307885112
 Rigidbody:
   m_ObjectHideFlags: 0
