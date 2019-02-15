@@ -7,6 +7,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private Transform turretTransform;
     [SerializeField] private projectile projectile;
     [SerializeField] private Transform projectileSpawnPoint;
+    [SerializeField] private Transform projectileSpawnPoint2;
     [SerializeField] private float rotSpeed = 80f;
     [SerializeField] private float rate = 0.5f;
     private float timer;
@@ -25,6 +26,7 @@ public class Tower : MonoBehaviour
         {
             timer = 0f;
             Instantiate(projectile, projectileSpawnPoint.position, turretTransform.rotation);
+            Instantiate(projectile, projectileSpawnPoint2.position, turretTransform.rotation);
         }
 
     }
