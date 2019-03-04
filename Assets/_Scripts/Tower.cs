@@ -5,31 +5,28 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] private List<Enemy> enemies = new List<Enemy>(8);
     [SerializeField] private Transform turretTransform;
-    [SerializeField] private projectile projectile;
-    [SerializeField] private Transform projectileSpawnPoint;
-    [SerializeField] private Transform projectileSpawnPoint2;
     [SerializeField] private float rotSpeed = 80f;
-    [SerializeField] private float rate = 0.5f;
-    private float timer;
+    [SerializeField] private weapon weapon;
+   
 
 
     private void Update()
     {
-        float step = rotSpeed * Time.deltaTime;
-        if (enemies.Count == 0) { return; }
+        if (enemies.Count == 0 ) { return; }
+        Aim();
+        weapon.OnWeapon();
+
+    }
+
+    private void Aim()
+    {
         Vector3 targetDir = enemies[0].transform.position - transform.position;
         targetDir.y = 0f;
         Quaternion targetRot = Quaternion.LookRotation(targetDir, Vector3.up);
+        float step = rotSpeed * Time.deltaTime;
         turretTransform.rotation = Quaternion.RotateTowards(turretTransform.rotation, targetRot, step);
-        timer += Time.deltaTime;
-        if (timer>= rate)
-        {
-            timer = 0f;
-            Instantiate(projectile, projectileSpawnPoint.position, turretTransform.rotation);
-            Instantiate(projectile, projectileSpawnPoint2.position, turretTransform.rotation);
-        }
-
     }
+
     private void OnTriggerEnter(Collider other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
