@@ -27,8 +27,13 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Projectile"))
         {
-            Destroy(gameObject);
+            TakeDamage();
         }
+    }
+
+    public void TakeDamage()
+    {
+        Destroy(gameObject);
     }
     private void OnDisable()
     {

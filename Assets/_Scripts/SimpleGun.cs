@@ -13,7 +13,7 @@ public class SimpleGun : weapon
 
     public override void OnWeapon()
     {
-        // Debug.DrawRay(transform.position, transform.up * 10f, Color.red);
+        Debug.DrawRay(transform.position, transform.up * 10f, Color.red);
         timer += Time.deltaTime;
         if (timer >= rate && Physics.SphereCast (transform.position, 1f, transform.up, out RaycastHit hit )) 
         {
