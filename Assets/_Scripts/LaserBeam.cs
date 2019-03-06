@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class LaserBeam : weapon
 {
@@ -7,10 +8,19 @@ public class LaserBeam : weapon
     [SerializeField] private float range = 4f;
     [SerializeField] private LayerMask layerMask; 
     private float timer;
-    [SerializeField]  ParticleSystem fireBeam;
-    
+    public ParticleSystem fireBeam;
+    [SerializeField] private List<Enemy> enemies = new List<Enemy>(8);
 
-    
+    private void Awake()
+    {
+        fireBeam.Stop();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        fireBeam.Play();
+    }
+
 
     public override void OnWeapon()
     {
@@ -31,21 +41,9 @@ public class LaserBeam : weapon
 
             }
         }
-    }
-
-    public override void SetActive(bool active)
-    {
-        if (active == true)
-        {
-            fireBeam.Stop();
-        }
-        else
-        {
-            fireBeam.Play();
-        }
-    }
-    
+    } 
 }
 
 
 
+//GameObject.FindObjectWithTag("WHATEVER YOU HAVE TAGGED YOUR OBJECT").GetComponent<ParticleSystem>().enableEmission = true;
