@@ -7,6 +7,10 @@ public class LaserBeam : weapon
     [SerializeField] private float range = 4f;
     [SerializeField] private LayerMask layerMask; 
     private float timer;
+    [SerializeField]  ParticleSystem fireBeam;
+    
+
+    
 
     public override void OnWeapon()
     {
@@ -28,5 +32,20 @@ public class LaserBeam : weapon
             }
         }
     }
+
+    public override void SetActive(bool active)
+    {
+        if (active == true)
+        {
+            fireBeam.Stop();
+        }
+        else
+        {
+            fireBeam.Play();
+        }
+    }
+    
 }
+
+
 

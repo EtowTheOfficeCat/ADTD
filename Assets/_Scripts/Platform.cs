@@ -1,12 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
-public class Platform : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class Platform : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [System.Serializable]
+    public class PlatformEvent : UnityEvent<Vector3>
+    {
+
+    }
+
+    public static PlatformEvent Clicked = new PlatformEvent();
+
     [SerializeField] Color hoverColor;
     Color normalColor;
     Renderer rend;
-
+    private bool canBeClicked = true;
 
     private void Start()
     {
@@ -16,6 +25,7 @@ public class Platform : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (canBeClicked == false) { return; }
         
         rend.material.SetColor("_BaseColor", hoverColor);
     }
@@ -25,6 +35,17 @@ public class Platform : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         rend.material.SetColor("_BaseColor", normalColor);
     }
+    
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (canBeClicked == false) { return; }
+        canBeClicked = false;
+        //Vector3 platPos = transform.position;
+        //Clicked?.Invoke(new Vector3(platPos.x, platPos.y , platPos.z));
+        Clicked?.Invoke(transform.position);
 
+    }
 
 }
+
+

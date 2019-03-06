@@ -4,7 +4,8 @@ public class Game : MonoBehaviour
 {
     public static Camera MainCam { get; private set; }
 
-    [SerializeField] private Level level1; 
+    [SerializeField] private Level level1;
+    [SerializeField] private Player player; 
 
     private void Awake()
     {
@@ -16,7 +17,14 @@ public class Game : MonoBehaviour
     {
         Vector3 spawnPos = level1.SpawnTransform.position;
         Vector3 goalPos = level1.GoalTransform.position;
+        Debug.Log(player == null);
+        Debug.Log(player.Builder == null);
+        Debug.Log(level1 == null);
+        Debug.Log(level1.TowerShop == null);
+        player.Builder.towerShop = level1.TowerShop;
+        Debug.Log(player.Builder.towerShop == null);
         level1.Wave1.StartWave(spawnPos, goalPos);
+
     }
 }
 
@@ -42,5 +50,11 @@ public class Level
     public Wave Wave1
     {
         get { return wave1; }
+    }
+
+    [SerializeField] Tower[] towerShop;
+    public Tower [] TowerShop
+    {
+        get { return towerShop; }
     }
 }
