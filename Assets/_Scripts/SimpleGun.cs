@@ -22,5 +22,9 @@ public class SimpleGun : weapon
             Instantiate(projectile, projectileSpawnPoint2.position, rotTransform.rotation);
         }
     }
-    
+
+    public override void SetActive(bool active)
+    {
+        
+    }
 } 

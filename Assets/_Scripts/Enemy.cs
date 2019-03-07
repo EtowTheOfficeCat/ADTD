@@ -3,10 +3,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public class  EnemyEvent : UnityEvent<Enemy>
-    {
-
-    }
+    
     public EnemyEvent EnemyDied = new EnemyEvent();
     [SerializeField] private LayerMask layerMask;
     public void SetDestiation(Vector3 goalPos)

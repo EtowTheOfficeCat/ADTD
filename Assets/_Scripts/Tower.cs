@@ -8,16 +8,35 @@ public class Tower : MonoBehaviour
     [SerializeField] private float rotSpeed = 80f;
     [SerializeField] private weapon weapon;
     [SerializeField] private bool aimAtFirst = true;
-    
+
+    [SerializeField] private int price = 20;
+    public int Price
+    {
+        get { return price; }
+        set { price = value; }
+    }
+
+    //private bool particleSystemStop = false;
+    private bool hadEnemies = false;
+
     private void Update()
     {
         if (enemies.Count == 0 )
         {
-           
+            if (hadEnemies)
+            {
+                weapon.SetActive(false); 
+            }
+            hadEnemies = false;
             return;
+        }
+        if (!hadEnemies)
+        {
+            weapon.SetActive(true); 
         }
         Aim();
         weapon.OnWeapon();
+        hadEnemies = true;
 
     }
 

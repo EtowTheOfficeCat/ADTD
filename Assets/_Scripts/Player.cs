@@ -23,6 +23,13 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        builder.TowerBuilt.AddListener(Pay);
         Platform.Clicked.AddListener(builder.Build);
+
+    }
+
+    public void Pay (Tower t)
+    {
+        Money -= t.Price;
     }
 }

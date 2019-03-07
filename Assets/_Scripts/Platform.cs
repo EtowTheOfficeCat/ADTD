@@ -4,11 +4,7 @@ using UnityEngine.Events;
 
 public class Platform : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [System.Serializable]
-    public class PlatformEvent : UnityEvent<Vector3>
-    {
-
-    }
+   
 
     public static PlatformEvent Clicked = new PlatformEvent();
 

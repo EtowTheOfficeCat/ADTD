@@ -9,18 +9,7 @@ public class LaserBeam : weapon
     [SerializeField] private LayerMask layerMask; 
     private float timer;
     public ParticleSystem fireBeam;
-    [SerializeField] private List<Enemy> enemies = new List<Enemy>(8);
-
-    private void Awake()
-    {
-        fireBeam.Stop();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        fireBeam.Play();
-    }
-
+    
 
     public override void OnWeapon()
     {
@@ -41,9 +30,17 @@ public class LaserBeam : weapon
 
             }
         }
-    } 
+    }
+
+    public override void SetActive(bool active)
+    {
+        if(active == true)
+        {
+            fireBeam.Play();
+        }
+        else
+        {
+            fireBeam.Stop();
+        }
+    }
 }
-
-
-
-//GameObject.FindObjectWithTag("WHATEVER YOU HAVE TAGGED YOUR OBJECT").GetComponent<ParticleSystem>().enableEmission = true;

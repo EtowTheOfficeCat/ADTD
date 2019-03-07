@@ -17,12 +17,7 @@ public class Game : MonoBehaviour
     {
         Vector3 spawnPos = level1.SpawnTransform.position;
         Vector3 goalPos = level1.GoalTransform.position;
-        Debug.Log(player == null);
-        Debug.Log(player.Builder == null);
-        Debug.Log(level1 == null);
-        Debug.Log(level1.TowerShop == null);
         player.Builder.towerShop = level1.TowerShop;
-        Debug.Log(player.Builder.towerShop == null);
         level1.Wave1.StartWave(spawnPos, goalPos);
 
     }
