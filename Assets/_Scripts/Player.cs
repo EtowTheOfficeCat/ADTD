@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         builder.TowerBuilt.AddListener(Pay);
-        Platform.Clicked.AddListener(builder.Build);
+        
 
     }
 

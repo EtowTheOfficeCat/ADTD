@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tower : MonoBehaviour
 {
@@ -9,12 +10,20 @@ public class Tower : MonoBehaviour
     [SerializeField] private weapon weapon;
     [SerializeField] private bool aimAtFirst = true;
 
+    [SerializeField] private Sprite icon;
+    public Sprite Icon
+    {
+        get { return icon; }
+    }
+
     [SerializeField] private int price = 20;
     public int Price
     {
         get { return price; }
         set { price = value; }
     }
+
+    public Vector3 BuildPosition { get; set; }
 
     //private bool particleSystemStop = false;
     private bool hadEnemies = false;
