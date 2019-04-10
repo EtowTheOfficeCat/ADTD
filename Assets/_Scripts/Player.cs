@@ -24,8 +24,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         builder.TowerBuilt.AddListener(Pay);
-        
-
     }
 
     public void Pay (Tower t)

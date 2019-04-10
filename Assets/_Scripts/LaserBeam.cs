@@ -23,9 +23,9 @@ public class LaserBeam : weapon
             if(Physics.Raycast(ray, out hitInfo, range, layerMask, QueryTriggerInteraction.Collide))
             {
                 //hitInfo.collider.GetComponent<Enemy>().TakeDamage();
-                Debug.Log(hitInfo.collider.name);
+                //Debug.Log(hitInfo.collider.name);
                 Enemy enemy = hitInfo.collider.GetComponent<Enemy>();
-                Debug.Log(enemy == null);
+                //Debug.Log(enemy == null);
                 enemy?.TakeDamage();
 
             }

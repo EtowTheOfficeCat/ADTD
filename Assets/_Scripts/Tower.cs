@@ -92,7 +92,7 @@ public class Tower : MonoBehaviour
     }
     public void OnEnemyDied(Enemy enemy)
     {
-        print("Enemy died");
+        //print("Enemy died");
         enemies.Remove(enemy);
         enemy.EnemyDied.RemoveListener(OnEnemyDied);
     }

@@ -5366,6 +5366,7 @@ MonoBehaviour:
   rotSpeed: 80
   weapon: {fileID: 7924842354120899537}
   aimAtFirst: 1
+  icon: {fileID: 21300000, guid: 6fea0df3fb0a4a744b02a54f0936a42f, type: 3}
   price: 20
 --- !u!120 &7924842355332252124
 LineRenderer:

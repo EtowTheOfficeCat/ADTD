@@ -18,7 +18,7 @@ public class BuildButton : MonoBehaviour
         priceText.text = $"price: {tower.Price}";
         this.tower = tower;
     }
-    public void click()
+    public void Click()
     {
         Clicked?.Invoke(tower);
     }

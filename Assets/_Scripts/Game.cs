@@ -10,7 +10,7 @@ public class Game : MonoBehaviour
     private void Awake()
     {
         MainCam = Camera.main;
-        Transform myWorldTransform = level1.GoalTransform;
+        
     }
 
     private void Start()
