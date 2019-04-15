@@ -116,7 +116,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  maxHitPoints: 30
+  maxHitPoints: 10
 --- !u!195 &4832359403240410330
 NavMeshAgent:
   m_ObjectHideFlags: 0

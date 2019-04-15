@@ -264,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beamStartPoint: {fileID: 7924842355491054494}
   rate: 0.5
-  range: 4
+  range: 5
   layerMask:
     serializedVersion: 2
     m_Bits: 4097
@@ -5363,7 +5363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   turretTransform: {fileID: 7924842355362120636}
-  rotSpeed: 80
+  rotSpeed: 200
   weapon: {fileID: 7924842354120899537}
   aimAtFirst: 1
   icon: {fileID: 21300000, guid: 6fea0df3fb0a4a744b02a54f0936a42f, type: 3}
