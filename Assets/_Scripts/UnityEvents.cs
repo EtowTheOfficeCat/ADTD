@@ -8,7 +8,7 @@ public class EnemyEvent : UnityEvent<Enemy>
 }
 
 [System.Serializable]
-public class PlatformEvent : UnityEvent<Vector3>
+public class PlatformEvent : UnityEvent<Platform>
 {
 
 }

@@ -267,7 +267,7 @@ MonoBehaviour:
   range: 4
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4097
   fireBeam: {fileID: 7924842355557621856}
 --- !u!135 &7924842354120899533
 SphereCollider:

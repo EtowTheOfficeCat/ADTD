@@ -5,10 +5,23 @@ public class Game : MonoBehaviour
     public static Camera MainCam { get; private set; }
 
     [SerializeField] private Level level1;
-    [SerializeField] private Player player; 
+    [SerializeField] private Player player;
+
+    [SerializeField] private Canvas enemyCanvas;
+    public Canvas EnemyCanvas
+    {
+        get { return enemyCanvas; }
+    }
+
+    private static Game instance;
+    public static Game Instance
+    {
+        get { return instance; }
+    }
 
     private void Awake()
     {
+        instance = this;
         MainCam = Camera.main;
         
     }

@@ -13,6 +13,7 @@ public class Builder : MonoBehaviour
     private Vector3 curBuildPos;
     private Transform buildPanelTransform;
     public Tower[] towerShop { get; set; }
+    private Platform curPlatform;
 
     public void Start()
     {
@@ -34,18 +35,22 @@ public class Builder : MonoBehaviour
     }
 
 
-    public void DisplayBuildMenu(Vector3 pos)
+    public void DisplayBuildMenu(Platform platform)
     {
         buildMenu.Clear();
-        curBuildPos = pos; 
+        curBuildPos = platform.transform.position;
+        curPlatform = platform;
+        platform.IsOccupied = true;
         buildPanelTransform.gameObject.SetActive(true);
-        buildPanelTransform.position = Utility.WorldToUISpace(canvas, cam, pos);
+        buildPanelTransform.position = Utility.WorldToUISpace(canvas, cam, curBuildPos, Vector2.zero);
         buildMenu.Init(this);
     }
 
     public void CancelBuildMenu()
     {
+        curPlatform.IsOccupied = false;
         buildPanelTransform.gameObject.SetActive(false);
+       
     }
 
    

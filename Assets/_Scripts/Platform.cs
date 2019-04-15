@@ -11,7 +11,8 @@ public class Platform : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] Color hoverColor;
     Color normalColor;
     Renderer rend;
-    private bool canBeClicked = true;
+    //private bool canBeClicked = true;
+    public bool IsOccupied { get; set; } = false;
 
     private void Start()
     {
@@ -21,7 +22,8 @@ public class Platform : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (canBeClicked == false) { return; }
+        // if (canBeClicked == false) { return; }
+        if (IsOccupied == true) { return; }
         
         rend.material.SetColor("_BaseColor", hoverColor);
     }
@@ -34,11 +36,13 @@ public class Platform : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (canBeClicked == false) { return; }
-        canBeClicked = false;
+        //if (canBeClicked == false) { return; }
+        if(IsOccupied == true) { return;}
+        IsOccupied = false;
+        //canBeClicked = false;
         //Vector3 platPos = transform.position;
         //Clicked?.Invoke(new Vector3(platPos.x, platPos.y , platPos.z));
-        Clicked?.Invoke(transform.position);
+        Clicked?.Invoke(this);
 
     }
 

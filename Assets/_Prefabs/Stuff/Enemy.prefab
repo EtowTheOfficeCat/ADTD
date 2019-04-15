@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: fa30aa8755ef7a14b868016264bf9b77, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,9 +110,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: EnemyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  healthBarPrefab: {fileID: 8731305401266328047, guid: c7b8bea7c9fed974b871e02f2d3c2061,
+    type: 3}
+  offSet: {x: 0, y: 30}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
+  maxHitPoints: 30
 --- !u!195 &4832359403240410330
 NavMeshAgent:
   m_ObjectHideFlags: 0
