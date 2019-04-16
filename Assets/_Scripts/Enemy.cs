@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     {
         enemyCanvas = Game.Instance.EnemyCanvas;
         healthBar = Instantiate(healthBarPrefab, enemyCanvas.transform);
+        healthBar.transform.position = Utility.WorldToUISpace(enemyCanvas, Game.MainCam, transform.position, offSet);
         hitPoints = maxHitPoints;
         //print(enemyCanvas?.name);
     }

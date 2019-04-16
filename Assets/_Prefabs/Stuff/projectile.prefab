@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2755400197339112696}
   m_Layer: 9
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 8028725731380524139}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.008899689, y: -0.005199909, z: 0.0016536713}
-  m_LocalScale: {x: 0.01651695, y: 0.01651695, z: 0.049638554}
+  m_LocalScale: {x: 0.120344475, y: 0.120344475, z: 1.8023841}
   m_Children: []
   m_Father: {fileID: 388876058134879875}
   m_RootOrder: 0
@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &388876058134879875
 Transform:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ Transform:
   m_GameObject: {fileID: 8740423695812157707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 48.0028, y: 1.1534, z: 20.0915}
-  m_LocalScale: {x: 1, y: 1, z: 7.8792}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1191601549615498776}
   m_Father: {fileID: 0}
