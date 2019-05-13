@@ -1,36 +1,45 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 using Random = UnityEngine;
 
 public class Wave : MonoBehaviour
 {
+    public static UnityEvent LastEnemyGone = new UnityEvent();
     [SerializeField] private float minRate =0.4f;
     [SerializeField] private float maxRate = 2.2f;
+    [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private EnemyPool ePool;
     private Vector3 spawnPos;
     private Vector3 goalPos;
     private float timer;
     private float rate;
-    public int curEnemyIdx;
+    private float numEnemies = 5;
+    private int curEnemyIdx;
     private bool maySpawn;
+    
 
     public Enemy [] Enemies { get; private set; }
 
     private void Awake()
     {
-        Enemies = GetComponentsInChildren<Enemy>(true);
+        ePool = GameObject.Find("EnemyPool").GetComponent<EnemyPool>();
+        
         rate = UnityEngine.Random.Range(minRate, maxRate);
+        
+      
     }
 
     void Update()
     {
         if (maySpawn == false ) { return; }
         timer += Time.deltaTime;
-        if (timer>= rate && curEnemyIdx < Enemies.Length)
+        if (timer>= rate && numEnemies >0)
         {
             timer = 0f;
             SpawnEnemy();
         }
-        else if (curEnemyIdx >= Enemies.Length)
+        else if (curEnemyIdx >= numEnemies)
         {
             maySpawn = false;
             timer = 0f;
@@ -40,10 +49,22 @@ public class Wave : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        Enemy enemy = Enemies [curEnemyIdx];
-        enemy.gameObject.SetActive(true);
+        Enemy enemy = ePool.GetNext(transform.position, transform.rotation);
+        enemy.EnemyDied.AddListener(CheckIfLastEnemy);
+        enemy.transform.parent = transform;
         enemy.SetDestiation(goalPos);
         curEnemyIdx++;
+    }
+
+    private void CheckIfLastEnemy(Enemy enemy)
+    {
+        enemy.EnemyDied.RemoveListener(CheckIfLastEnemy);
+        if (curEnemyIdx >= numEnemies && transform.childCount >=1)
+        {
+            //Game Bescheid sagen
+            LastEnemyGone?.Invoke();
+
+        }
     }
 
     public void StartWave (Vector3 spawnPos, Vector3 goalPos)
@@ -52,4 +73,6 @@ public class Wave : MonoBehaviour
         this.goalPos = goalPos;
         maySpawn = true;
     }
+
+    
 }

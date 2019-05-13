@@ -2,9 +2,9 @@
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.UI;
+
 public class Enemy : MonoBehaviour
 {
-    
     public EnemyEvent EnemyDied = new EnemyEvent();
     [SerializeField] private HealthBar healthBarPrefab;
     [SerializeField] private Vector2 offSet;
@@ -13,6 +13,12 @@ public class Enemy : MonoBehaviour
     private Canvas enemyCanvas;
     [SerializeField] private int maxHitPoints = 10;
     private int hitPoints;
+
+    private EnemyPool ePool;
+    public EnemyPool Epool
+    {
+        set { ePool = value; }
+    }
 
     private void OnEnable()
     {
@@ -51,14 +57,18 @@ public class Enemy : MonoBehaviour
         healthBar.FillImage.fillAmount = hitPoints / (float)maxHitPoints;
         if(hitPoints <= 0)
         {
-            Destroy(gameObject);
+            ePool.ReturnToPool(this);
         }
     }
 
     private void OnDisable()
     {
-        Destroy(healthBar.gameObject);
-        EnemyDied?.Invoke(this);
+        
+        if (healthBar != null)
+        {
+            Destroy(healthBar.gameObject);
+        }
+        //EnemyDied?.Invoke(this);
         
     }
     

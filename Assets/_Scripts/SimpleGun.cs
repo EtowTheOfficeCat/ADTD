@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SimpleGun : weapon
 {
-    [SerializeField] private projectile projectile;
+    [SerializeField] private Enemy projectile;
     [SerializeField] private Transform rotTransform;
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private Transform projectileSpawnPoint2;

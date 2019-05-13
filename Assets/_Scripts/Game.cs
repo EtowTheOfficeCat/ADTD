@@ -4,8 +4,10 @@ public class Game : MonoBehaviour
 {
     public static Camera MainCam { get; private set; }
 
-    [SerializeField] private Level level1;
+    [SerializeField] private Level[] levels;
     [SerializeField] private Player player;
+    private GameState gameState = GameState.Play;
+    private int curLevelIdx = 0;
 
     [SerializeField] private Canvas enemyCanvas;
     public Canvas EnemyCanvas
@@ -16,23 +18,44 @@ public class Game : MonoBehaviour
     private static Game instance;
     public static Game Instance
     {
-        get { return instance; }
+        get
+        {
+            if (instance != null)
+            {
+                return instance;
+            }
+            else
+            {
+                instance = GameObject.Find("GAME").GetComponent<Game>();
+                return instance;
+            }
+        }
     }
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
         MainCam = Camera.main;
-        
+
     }
 
     private void Start()
     {
-        Vector3 spawnPos = level1.SpawnTransform.position;
-        Vector3 goalPos = level1.GoalTransform.position;
-        player.Builder.towerShop = level1.TowerShop;
-        level1.Wave1.StartWave(spawnPos, goalPos);
+        Vector3 spawnPos = levels[0].SpawnTransform.position;
+        Vector3 goalPos = levels[0].GoalTransform.position;
+        player.Builder.towerShop = levels[0].TowerShop;
+        levels[0].Wave1.StartWave(spawnPos, goalPos);
+        Wave.LastEnemyGone.AddListener(SwitchWave);
+        // TODO: Unsubscribe
 
+    }
+
+    private void SwitchWave()
+    {
+        Debug.Log("This was the last enemy");
     }
 }
 
@@ -61,8 +84,15 @@ public class Level
     }
 
     [SerializeField] Tower[] towerShop;
-    public Tower [] TowerShop
+    public Tower[] TowerShop
     {
         get { return towerShop; }
     }
+
+
+}
+
+enum GameState
+{
+    Intro, Play, Pause, GameOver
 }
