@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+    public static UnityEvent PressedPause = new UnityEvent();
     [SerializeField]private int money = 100;
     public int Money
     {
@@ -24,6 +26,14 @@ public class Player : MonoBehaviour
     private void Start()
     {
         builder.TowerBuilt.AddListener(Pay);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PressedPause?.Invoke();
+        }
     }
 
     public void Pay (Tower t)

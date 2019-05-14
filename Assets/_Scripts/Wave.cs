@@ -14,7 +14,7 @@ public class Wave : MonoBehaviour
     private Vector3 goalPos;
     private float timer;
     private float rate;
-    private float numEnemies = 5;
+    [SerializeField] private float numEnemies = 5;
     private int curEnemyIdx;
     private bool maySpawn;
     
@@ -59,7 +59,7 @@ public class Wave : MonoBehaviour
     private void CheckIfLastEnemy(Enemy enemy)
     {
         enemy.EnemyDied.RemoveListener(CheckIfLastEnemy);
-        if (curEnemyIdx >= numEnemies && transform.childCount >=1)
+        if (curEnemyIdx >= numEnemies && transform.childCount ==0)
         {
             //Game Bescheid sagen
             LastEnemyGone?.Invoke();

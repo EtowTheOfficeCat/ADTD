@@ -4,12 +4,15 @@ public class Game : MonoBehaviour
 {
     public static Camera MainCam { get; private set; }
 
+    [SerializeField] private GameObject blockerPanel;
     [SerializeField] private Level[] levels;
     [SerializeField] private Player player;
+    [SerializeField] private Canvas enemyCanvas;
     private GameState gameState = GameState.Play;
     private int curLevelIdx = 0;
+    private int curWaveIdx = 0;
 
-    [SerializeField] private Canvas enemyCanvas;
+    
     public Canvas EnemyCanvas
     {
         get { return enemyCanvas; }
@@ -44,20 +47,51 @@ public class Game : MonoBehaviour
 
     private void Start()
     {
-        Vector3 spawnPos = levels[0].SpawnTransform.position;
-        Vector3 goalPos = levels[0].GoalTransform.position;
+        Player.PressedPause.AddListener(Pause);
         player.Builder.towerShop = levels[0].TowerShop;
-        levels[0].Wave1.StartWave(spawnPos, goalPos);
+        levels[0].Waves[curWaveIdx].StartWave(levels[0].SpawnTransform.position, levels[0].GoalTransform.position);
         Wave.LastEnemyGone.AddListener(SwitchWave);
-        // TODO: Unsubscribe
+
+        // TODO: Unsubscribe at the very end 
 
     }
 
     private void SwitchWave()
     {
+        Debug.Log($"Starting next wave in { levels[0].WaveDelay} seconds");
+        Invoke("StartWave", levels[0].WaveDelay);
+        
+
+    }
+
+    private void StartWave()
+    {
         Debug.Log("This was the last enemy");
+        curWaveIdx++;
+        if (curWaveIdx < levels[0].Waves.Length)
+        {
+            levels[0].Waves[curWaveIdx].StartWave(levels[0].SpawnTransform.position, levels[0].GoalTransform.position);
+        }
+        //else level is over, switch to next level. 
+    }
+
+    private void Pause ()
+    {
+        if (gameState == GameState.Play)
+        {
+            Time.timeScale = 0f;
+            blockerPanel.SetActive(true);
+            gameState = GameState.Pause;
+        }
+        else if (gameState == GameState.Pause)
+        {
+            Time.timeScale = 1f;
+            blockerPanel.SetActive(false);
+            gameState = GameState.Play;
+        }
     }
 }
+
 
 [System.Serializable]
 public class Level
@@ -77,10 +111,10 @@ public class Level
     {
         get { return goalTransform; }
     }
-    [SerializeField] private Wave wave1;
-    public Wave Wave1
+    [SerializeField] private Wave[] waves;
+    public Wave[] Waves
     {
-        get { return wave1; }
+        get { return waves; }
     }
 
     [SerializeField] Tower[] towerShop;
@@ -88,7 +122,11 @@ public class Level
     {
         get { return towerShop; }
     }
-
+    [SerializeField] private float waveDelay;
+    public float WaveDelay
+    {
+        get { return waveDelay; }
+    }
 
 }
 
