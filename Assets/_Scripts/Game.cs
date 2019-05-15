@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 public class Game : MonoBehaviour
 {
     public static Camera MainCam { get; private set; }
@@ -8,7 +9,8 @@ public class Game : MonoBehaviour
     [SerializeField] private Level[] levels;
     [SerializeField] private Player player;
     [SerializeField] private Canvas enemyCanvas;
-    private GameState gameState = GameState.Play;
+    private GameState gameState = GameState.Intro;
+    private AudioManager audioManager;
     private int curLevelIdx = 0;
     private int curWaveIdx = 0;
 
@@ -42,18 +44,25 @@ public class Game : MonoBehaviour
             instance = this;
         }
         MainCam = Camera.main;
+        audioManager = GetComponent<AudioManager>();
 
     }
 
     private void Start()
     {
+        StartNewGame();
+    }
+
+    private void StartNewGame()
+    {
+        gameState = GameState.Play;
+        audioManager.PlayMusic();
         Player.PressedPause.AddListener(Pause);
         player.Builder.towerShop = levels[0].TowerShop;
         levels[0].Waves[curWaveIdx].StartWave(levels[0].SpawnTransform.position, levels[0].GoalTransform.position);
         Wave.LastEnemyGone.AddListener(SwitchWave);
-
+        
         // TODO: Unsubscribe at the very end 
-
     }
 
     private void SwitchWave()
@@ -79,12 +88,14 @@ public class Game : MonoBehaviour
     {
         if (gameState == GameState.Play)
         {
+            audioManager.PauseEffect(true);
             Time.timeScale = 0f;
             blockerPanel.SetActive(true);
             gameState = GameState.Pause;
         }
         else if (gameState == GameState.Pause)
         {
+            audioManager.PauseEffect(false);
             Time.timeScale = 1f;
             blockerPanel.SetActive(false);
             gameState = GameState.Play;

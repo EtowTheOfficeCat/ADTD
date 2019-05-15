@@ -50,7 +50,7 @@ public class Wave : MonoBehaviour
     private void SpawnEnemy()
     {
         Enemy enemy = ePool.GetNext(transform.position, transform.rotation);
-        enemy.EnemyDied.AddListener(CheckIfLastEnemy);
+        enemy.ReturnedToPool.AddListener(CheckIfLastEnemy);
         enemy.transform.parent = transform;
         enemy.SetDestiation(goalPos);
         curEnemyIdx++;
@@ -58,7 +58,7 @@ public class Wave : MonoBehaviour
 
     private void CheckIfLastEnemy(Enemy enemy)
     {
-        enemy.EnemyDied.RemoveListener(CheckIfLastEnemy);
+        enemy.ReturnedToPool.RemoveListener(CheckIfLastEnemy);
         if (curEnemyIdx >= numEnemies && transform.childCount ==0)
         {
             //Game Bescheid sagen

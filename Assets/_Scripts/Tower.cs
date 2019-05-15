@@ -7,8 +7,13 @@ public class Tower : MonoBehaviour
     [SerializeField] private List<Enemy> enemies = new List<Enemy>(8);
     [SerializeField] private Transform turretTransform;
     [SerializeField] private float rotSpeed = 80f;
-    [SerializeField] private weapon weapon;
     [SerializeField] private bool aimAtFirst = true;
+
+    [SerializeField] private Weapon weapon;
+    public Weapon Weapon
+    {
+        get { return weapon; }
+    }
 
     [SerializeField] private Sprite icon;
     public Sprite Icon
@@ -80,20 +85,20 @@ public class Tower : MonoBehaviour
         
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy == null) { return; }
-        enemy.EnemyDied.AddListener(OnEnemyDied);
+        enemy.ReturnedToPool.AddListener(OnEnemyDied);
         enemies.Add(enemy);
     }
     private void OnTriggerExit(Collider other)
     { 
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy == null) { return; }
-        enemy.EnemyDied.RemoveListener(OnEnemyDied);
+        enemy.ReturnedToPool.RemoveListener(OnEnemyDied);
         enemies.Remove(enemy);
     }
     public void OnEnemyDied(Enemy enemy)
     {
         //print("Enemy died");
         enemies.Remove(enemy);
-        enemy.EnemyDied.RemoveListener(OnEnemyDied);
+        enemy.ReturnedToPool.RemoveListener(OnEnemyDied);
     }
 }

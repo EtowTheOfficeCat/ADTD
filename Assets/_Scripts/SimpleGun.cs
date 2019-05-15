@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleGun : weapon
+public class SimpleGun : Weapon
 {
     [SerializeField] private Enemy projectile;
     [SerializeField] private Transform rotTransform;
@@ -25,6 +25,9 @@ public class SimpleGun : weapon
         timer += Time.deltaTime;
         if (timer >= rate && Physics.SphereCast (transform.position, 1f, transform.forward, out RaycastHit hit ) && isActive) 
         {
+            // GetComponentInParent<TowerAudio>()?.PlayWeaponSound(weaponSound);
+            WeaponFired?.Invoke(this);
+
             timer = 0f;
             projectile pr = pool.GetNext( projectileSpawnPoint.position, rotTransform.rotation);
             projectile prj = pool.GetNext( projectileSpawnPoint2.position, rotTransform.rotation);

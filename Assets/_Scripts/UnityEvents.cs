@@ -18,3 +18,9 @@ public class TowerEvent : UnityEvent <Tower>
 {
     //wird benutzt von scripte....
 }
+
+[System.Serializable]
+public class WeaponEvent : UnityEvent<Weapon>
+{
+    //wird benutzt von scripte....
+}

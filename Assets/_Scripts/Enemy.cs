@@ -5,20 +5,30 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public EnemyEvent EnemyDied = new EnemyEvent();
+    public EnemyEvent ReturnedToPool = new EnemyEvent();
+    public static EnemyEvent EnemyDied = new EnemyEvent();
     [SerializeField] private HealthBar healthBarPrefab;
     [SerializeField] private Vector2 offSet;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private int maxHitPoints = 10;
+    
+    [SerializeField] protected AudioClip enemyDiedSound;
+    public AudioClip EnemyDiedSound
+    {
+        get { return enemyDiedSound; }
+    }
+
     private HealthBar healthBar;
     private Canvas enemyCanvas;
-    [SerializeField] private int maxHitPoints = 10;
     private int hitPoints;
-
     private EnemyPool ePool;
+
     public EnemyPool Epool
     {
         set { ePool = value; }
     }
+
+
 
     private void OnEnable()
     {

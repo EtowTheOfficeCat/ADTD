@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserBeam : weapon
+public class LaserBeam : Weapon
 {
     [SerializeField] private Transform beamStartPoint;
     [SerializeField] private float rate = 0.5f;
@@ -17,6 +17,8 @@ public class LaserBeam : weapon
         timer += Time.deltaTime;
         if (timer >= rate)
         {
+           // GetComponentInParent<TowerAudio>()?.PlayWeaponSound(weaponSound);
+            WeaponFired?.Invoke(this);
             timer = 0f;
             Ray ray = new Ray(beamStartPoint.position, transform.up);
             RaycastHit hitInfo;
@@ -29,6 +31,7 @@ public class LaserBeam : weapon
                 enemy?.TakeDamage();
 
             }
+
         }
     }
 
