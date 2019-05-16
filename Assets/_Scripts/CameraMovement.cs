@@ -8,14 +8,14 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.D))
         {
-            this.transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
+            this.transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
         }
 
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.A))
         {
-            this.transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
+            this.transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
         }
     }
 }

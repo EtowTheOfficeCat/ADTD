@@ -118,7 +118,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  maxHitPoints: 50
+  maxHitPoints: 30
   enemyDiedSound: {fileID: 8300000, guid: 4fb97a3e9189c944aae5c05394cd1c1f, type: 3}
 --- !u!114 &5365769796343382994
 MonoBehaviour:

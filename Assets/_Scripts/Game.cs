@@ -9,12 +9,14 @@ public class Game : MonoBehaviour
     [SerializeField] private Level[] levels;
     [SerializeField] private Player player;
     [SerializeField] private Canvas enemyCanvas;
+    [SerializeField] private NewWaveUI newWaveUI;
     private GameState gameState = GameState.Intro;
     private AudioManager audioManager;
     private int curLevelIdx = 0;
     private int curWaveIdx = 0;
+    private int numEnemiesAtGoal;
+   
 
-    
     public Canvas EnemyCanvas
     {
         get { return enemyCanvas; }
@@ -61,26 +63,33 @@ public class Game : MonoBehaviour
         player.Builder.towerShop = levels[0].TowerShop;
         levels[0].Waves[curWaveIdx].StartWave(levels[0].SpawnTransform.position, levels[0].GoalTransform.position);
         Wave.LastEnemyGone.AddListener(SwitchWave);
+        Enemy.ReachedGoal.AddListener(UpdateEnemiesAtGoal);
         
         // TODO: Unsubscribe at the very end 
     }
 
+    private void UpdateEnemiesAtGoal(Enemy enemy)
+    {
+        numEnemiesAtGoal++;
+        float strength = (float)numEnemiesAtGoal / levels[0].Waves[curWaveIdx].NumEnemies;
+        audioManager.DramaEffect(strength);
+    }
+
     private void SwitchWave()
     {
-        Debug.Log($"Starting next wave in { levels[0].WaveDelay} seconds");
-        Invoke("StartWave", levels[0].WaveDelay);
-        
-
+        curWaveIdx++;
+        numEnemiesAtGoal = 0;
+        if (curWaveIdx < levels[0].Waves.Length)
+        {
+            audioManager.DramaEffect(0);
+            newWaveUI.SchowCountDown(levels[0].WaveDelay);
+            Invoke("StartWave", levels[0].WaveDelay);
+        }
     }
 
     private void StartWave()
     {
-        Debug.Log("This was the last enemy");
-        curWaveIdx++;
-        if (curWaveIdx < levels[0].Waves.Length)
-        {
-            levels[0].Waves[curWaveIdx].StartWave(levels[0].SpawnTransform.position, levels[0].GoalTransform.position);
-        }
+        levels[0].Waves[curWaveIdx].StartWave(levels[0].SpawnTransform.position, levels[0].GoalTransform.position);
         //else level is over, switch to next level. 
     }
 

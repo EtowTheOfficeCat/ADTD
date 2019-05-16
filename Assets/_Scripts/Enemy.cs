@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public EnemyEvent ReturnedToPool = new EnemyEvent();
+    public static EnemyEvent ReachedGoal = new EnemyEvent();
     public static EnemyEvent EnemyDied = new EnemyEvent();
     [SerializeField] private HealthBar healthBarPrefab;
     [SerializeField] private Vector2 offSet;
@@ -58,6 +59,12 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Projectile"))
         {
             TakeDamage();
+        }
+        if (other.CompareTag("Goal"))
+        {
+            ePool.ReturnToPool(this);
+            print("entered");
+            ReachedGoal?.Invoke(this);
         }
     }
 

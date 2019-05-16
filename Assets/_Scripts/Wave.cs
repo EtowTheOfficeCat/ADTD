@@ -14,10 +14,15 @@ public class Wave : MonoBehaviour
     private Vector3 goalPos;
     private float timer;
     private float rate;
-    [SerializeField] private float numEnemies = 5;
+    [SerializeField] private int numEnemies = 5;
     private int curEnemyIdx;
     private bool maySpawn;
-    
+
+    public int NumEnemies
+    {
+        get { return numEnemies;  }
+    }
+
 
     public Enemy [] Enemies { get; private set; }
 
