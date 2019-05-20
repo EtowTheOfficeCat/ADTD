@@ -16,10 +16,6 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
-  - guid: a5bc6a7a8cf7b354da393d58de7aeba3
-    name: Pitch
-  - guid: 84660fa989421b44fb0bf4be9cd762bf
-    name: Wet
   - guid: d726ed442cf91d4429015dd235d31e81
     name: Cutoff
   m_AudioMixerGroupViews:
@@ -86,7 +82,7 @@ AudioMixerSnapshotController:
     855cd28812267d241a977d3834c5f488: 0
     8c7f15b81cb878a439de93166887d57c: 293
     3fccdee809b199340896739f681c9f10: 0.41900003
-    a5bc6a7a8cf7b354da393d58de7aeba3: 0.8
+    a5bc6a7a8cf7b354da393d58de7aeba3: 1
     c7c4e48ad78cd11448ebb55e04cfcebb: 0
     af30c61c779d3f243bfb63e14c4e3872: 22000
     a8a9813d0c5b6544f86fc219599a6b02: 0.831
@@ -110,7 +106,6 @@ AudioMixerGroupController:
   - {fileID: 244591900709067040}
   - {fileID: 244417262284169544}
   - {fileID: 244819547850218674}
-  - {fileID: 244915161989830562}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -160,30 +155,6 @@ AudioMixerEffectController:
   m_Parameters:
   - m_ParameterName: Cutoff freq
     m_GUID: d726ed442cf91d4429015dd235d31e81
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
---- !u!244 &244915161989830562
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: 06cb7ac3b6f2a4e40ba28a76d57f0656
-  m_EffectName: Echo
-  m_MixLevel: 2f045b1bf963d5d46b7752b6aa0aa744
-  m_Parameters:
-  - m_ParameterName: Delay
-    m_GUID: 72f75e132054ed74a96fe83428b77a58
-  - m_ParameterName: Decay
-    m_GUID: a5963b11383310649a5ca863c67929b6
-  - m_ParameterName: Max channels
-    m_GUID: 5fd370377612a3341af41a095419c37e
-  - m_ParameterName: Drymix
-    m_GUID: 06a5e785d9d01864d82e4c33d1659ab6
-  - m_ParameterName: Wetmix
-    m_GUID: 84660fa989421b44fb0bf4be9cd762bf
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0

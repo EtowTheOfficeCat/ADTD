@@ -72,7 +72,8 @@ public class Game : MonoBehaviour
     {
         numEnemiesAtGoal++;
         float strength = (float)numEnemiesAtGoal / levels[0].Waves[curWaveIdx].NumEnemies;
-        audioManager.DramaEffect(strength);
+        //audioManager.DramaEffect(strength);
+        print("Enemies close to goal!!");
     }
 
     private void SwitchWave()
@@ -81,9 +82,10 @@ public class Game : MonoBehaviour
         numEnemiesAtGoal = 0;
         if (curWaveIdx < levels[0].Waves.Length)
         {
-            audioManager.DramaEffect(0);
+            //audioManager.DramaEffect(0);
             newWaveUI.SchowCountDown(levels[0].WaveDelay);
             Invoke("StartWave", levels[0].WaveDelay);
+
         }
     }
 

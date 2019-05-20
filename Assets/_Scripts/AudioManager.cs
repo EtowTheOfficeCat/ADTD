@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
     {
         float t = Time.time - (int)Time.time;
         float modulation = LfoCurve.Evaluate(t);
-        //musicMixer.SetFloat("pitch", modulation * modStrength);
+        musicMixer.SetFloat("pitch", modulation * modStrength);
         musicSource.pitch = modulation * modStrength + 1;
 
     }
@@ -71,10 +71,10 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public void DramaEffect(float strengh)
-    {
-        modStrength = strengh;
+    //public void DramaEffect(float strengh)
+    //{
+    //    modStrength = strengh;
 
-        musicMixer.SetFloat("Wet", strengh);
-    }
+    //    musicMixer.SetFloat("Pitch", strengh);
+    //}
 }
